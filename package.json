@@ -22,7 +22,10 @@
         "sass-loader": "^11.0.1",
         "vue": "^2.6.12",
         "vue-loader": "^15.9.5",
-        "vue-template-compiler": "^2.6.12"
+        "vue-template-compiler": "^2.6.12",
+        "@cometchat-pro/chat": "3.0.1",
+        "dateformat": "^4.5.1",
+        "twemoji": "^13.1.0"
     },
     "dependencies": {
         "@babel/plugin-proposal-class-properties": "^7.14.5",
