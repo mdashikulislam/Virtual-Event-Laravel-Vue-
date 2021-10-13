@@ -16,6 +16,28 @@ window.Vue = require('vue').default;
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
+import { CometChat } from "@cometchat-pro/chat/CometChat";
+
+let cometChatAppSetting = new CometChat.AppSettingsBuilder()
+    .subscribePresenceForAllUsers()
+    .setRegion(process.env.MIX_COMMETCHAT_APP_REGION)
+    .build();
+
+CometChat.init(process.env.MIX_COMMETCHAT_APP_ID, cometChatAppSetting).then(
+    () => {
+        console.log("Initialization completed successfully");
+
+        const app = new Vue({
+            el: '#app',
+        });
+    },
+    (error) => {
+        console.log("Initialization failed with error:", error);
+    }
+);
+
+
+
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 

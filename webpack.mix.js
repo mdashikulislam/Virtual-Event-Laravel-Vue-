@@ -11,6 +11,12 @@ const mix = require('laravel-mix');
  |
  */
 
+mix.webpackConfig({
+    module: {
+        rules: [{ test: /\.wav$/, use: 'file-loader'}]
+    }
+})
+
 mix.js('resources/js/app.js', 'public/js')
     .vue()
     .sass('resources/sass/app.scss', 'public/css');

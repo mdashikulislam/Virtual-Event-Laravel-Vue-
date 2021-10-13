@@ -20,3 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth'])->group(function() {
+    Route::post('/create', [App\Http\Controllers\EventController::class, 'createEvent'])->name('create-event');
+    Route::get('/create-event', [App\Http\Controllers\EventController::class, 'index'])->name('create-event-view');
+    Route::get('/view-single-event/{id}', [App\Http\Controllers\EventController::class, 'viewSingleEvent']);
+    Route::get('/event/{id}', [App\Http\Controllers\EventController::class, 'viewEvent'])->name('view-event');
+    Route::get('/events', [App\Http\Controllers\EventController::class, 'viewEvents'])->name('view-events');
+});
