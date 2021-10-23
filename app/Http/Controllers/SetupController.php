@@ -12,7 +12,6 @@ use PDOException;
 use Exception;
 
 use App\Http\Requests\SetupDatabaseRequest;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 
@@ -38,7 +37,7 @@ class SetupController extends Controller
     {
         return view('setup.database');
     }
-    public function saveDatabase(Request $request){
+    public function saveDatabase(SetupDatabaseRequest $request){
 
         $this->createTempDatabaseConnection($request->all());
         if ($this->databaseHasData() && !$request->has('overwrite_data')) {
@@ -54,6 +53,16 @@ class SetupController extends Controller
         $this->storeConfigurationInEnv();
 
         return redirect()->route('setup.account');
+    }
+
+    public function accountSetup()
+    {
+        return view('setup.account');
+    }
+
+    public function register(Request $request)
+    {
+        return $request->all();
     }
     protected function storeConfigurationInEnv(): void
     {

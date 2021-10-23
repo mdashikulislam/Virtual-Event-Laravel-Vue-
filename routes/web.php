@@ -35,4 +35,8 @@ Route::prefix('setup')->group(function (){
     Route::get('database',[\App\Http\Controllers\SetupController::class,'database'])->name('setup.database');
     Route::post('database', [\App\Http\Controllers\SetupController::class, 'saveDatabase'])
         ->name('setup.save-database');
+    Route::get('account', [\App\Http\Controllers\SetupController::class, 'accountSetup'])
+        ->name('setup.account');
+    Route::post('account', [\App\Http\Controllers\SetupController::class, 'register'])
+        ->name('setup.save-account');
 });
